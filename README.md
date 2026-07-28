@@ -50,7 +50,7 @@ Changes to the repository are documented in [CHANGELOG.md](./CHANGELOG.md).
 
 The key steps to running a submission locally, from pulling the image to producing `submission.csv`, are:
 
-1. Install the [**prerequisites**](#prerequisites) and **set up testing [data](#data-for-testing)**. We recommend downloading the smoke test data (`smoke_test_data.tar.gz`) from the [data download page](https://www.drivendata.org/competitions/311/dat-parkinsons-challenge/data/) and placing its contents in the data-demo directory. Images should be in `data-demo/nifts`, and the `submission_format.csv` should be in `data-demo/`.
+1. Install the [**prerequisites**](#prerequisites) and **set up testing [data](#data-for-testing)**. We recommend downloading the smoke test data (`smoke_test_data.tar.gz`) from the [data download page](https://www.drivendata.org/competitions/311/dat-parkinsons-challenge/data/) and placing its contents in the data-demo directory. Images should be in `data-demo/niftis`, and the `submission_format.csv` should be in `data-demo/`.
 2. **Open Docker**. The following commands must be executed with Docker running
 3. Download the official **runtime image** from Azure Container Registry:
 
