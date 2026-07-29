@@ -55,6 +55,7 @@ dependencies = [
     "transformers",
     "urllib3",
     "xarray",
+    "xgboost",
 ]
 
 [tool.uv]
