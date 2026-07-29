@@ -36,8 +36,19 @@ _check-image:
     set -euo pipefail
     echo "Checking submission image: {{submission_image}}"
     if [[ -z "$(docker images -q {{submission_image}} 2>/dev/null)" ]]; then
-        echo "Error: To test your submission, you must first run 'just pull' or 'just build'"
-        exit 1
+        # If the submission_image is the local tag, also check for the official image
+        if [[ "{{submission_image}}" == "{{local_image}}:{{local_tag}}" ]]; then
+            if [[ -z "$(docker images -q {{official_image}}:{{tag}} 2>/dev/null)" ]]; then
+                echo "Error: To test your submission, you must first run 'just pull' or 'just build'"
+                exit 1
+            else
+                # Tag the official image as the local image for consistency
+                docker tag {{official_image}}:{{tag}} {{submission_image}}
+            fi
+        else
+            echo "Error: To test your submission, you must first run 'just pull' or 'just build'"
+            exit 1
+        fi
     fi
 
 # Helper: Echo image information
