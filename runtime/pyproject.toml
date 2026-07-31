@@ -20,7 +20,7 @@ dependencies = [
     "jsonpickle",
     "lightgbm",
     "loguru",
-    "matplotlib", 
+    "matplotlib",
     "monai",
     "more-itertools",
     "nibabel",
@@ -55,6 +55,7 @@ dependencies = [
     "transformers",
     "urllib3",
     "xarray",
+    "xgboost",
 ]
 
 [tool.uv]
