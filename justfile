@@ -36,7 +36,8 @@ _check-image:
     set -euo pipefail
     echo "Checking submission image: {{submission_image}}"
     if [[ -z "$(docker images -q {{submission_image}} 2>/dev/null)" ]]; then
-        echo "Error: To test your submission, you must first run 'just pull' or 'just build'"
+        echo "Error: No image found for {{submission_image}}"
+        echo "Run 'just pull' and set SUBMISSION_IMAGE in .env (see README), or run 'just build'."
         exit 1
     fi
 

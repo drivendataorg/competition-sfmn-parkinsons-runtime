@@ -58,7 +58,19 @@ The key steps to running a submission locally, from pulling the image to produci
     just pull
     ```
 
-    To use a local image instead of the official image, run `just build` instead. A locally built image takes precedence over a pulled one. Set `SUBMISSION_IMAGE` in `.env` to force a specific image.
+    This downloads the fully built image — there is nothing to compile afterward. Then point
+    `just test-submission` at it by adding this line to a `.env` file in the repo root:
+
+    ```
+    SUBMISSION_IMAGE=competitionsfmnparkinsonsprodacr.azurecr.io/competition-sfmn-parkinsons-runtime:gpu-latest
+    ```
+
+    > **`just build` is not a follow-up to `just pull`.** The two are alternatives: `pull` downloads
+    > the official image, while `build` constructs an equivalent one locally from
+    > [`runtime/`](./runtime/). You only need `build` if you are
+    > [changing what's installed in the runtime](#requesting-changes-to-the-official-runtime).
+    > Testing your own submission never requires a rebuild — your code is mounted into the
+    > container at run time, not baked into the image.
 
 4. **Build `submission/submission.zip`**. To build a submission from the minimal example (`examples/minimal`), run:
 
