@@ -56,6 +56,9 @@ dependencies = [
     "urllib3",
     "xarray",
     "xgboost",
+    "keras-cv-attention-models",
+    "tensorflow[and-cuda]",
+    "tf-keras",
 ]
 
 [tool.uv]

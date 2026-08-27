@@ -54,6 +54,7 @@ packages = [
     "transformers",
     "urllib3",
     "xarray",
+    "tensorflow",
 ]
 
 
@@ -98,3 +99,17 @@ def test_torch_allocate_tensor():
 
     tensor = torch.zeros(1).cuda()
     assert tensor.device.type == "cuda"
+
+
+@pytest.mark.skipif(not GPU_AVAILABLE, reason="No GPU available")
+def test_tensorflow_gpu_available():
+    """Test whether tensorflow is using the available GPU"""
+    
+    import tensorflow as tf
+    
+    tf.debugging.set_log_device_placement(True)
+    
+    a = tf.constant([[1.0, 2.0], [3.0, 4.0]])
+    b = tf.constant([[1.0, 1.0], [0.1, 0.2]])
+    c = tf.matmul(a, b)
+    assert 'GPU' in c.device
